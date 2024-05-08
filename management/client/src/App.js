@@ -9,7 +9,7 @@ import {
 import Customer from "./components/Customer";
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
-import api from './axios/api'
+import api from "./axios/api";
 
 function App() {
   const [customers, setCustomers] = useState([]);
@@ -20,9 +20,8 @@ function App() {
 
   const getCustomers = async () => {
     try {
-      const res = await api.get("/api/customers");
-      // setCustomers(res);
-      console.log(res);
+      const { data } = await api.get("/api/customers");
+      setCustomers(data);
     } catch (error) {
       console.log(error);
     }
